@@ -87,11 +87,10 @@ describe('Routes - test switch for api response', () => {
     expect(params.response.writeHead).not.toHaveBeenCalledWith(200, { 'Content-Type': config.constants.CONTENT_TYPE[expectedType] })
   })
 
-  test('GET /unknown - should respond with 404', async () => {
+  test('POST /unknown - should respond with 404', async () => {
     const params = TestUtil.defaultHandleParams()
-    params.request.method = 'GET'
+    params.request.method = 'POST'
     params.request.url = '/unknown'
-    const expectedType = '.ext'
 
     await handler(...params.values())
 
